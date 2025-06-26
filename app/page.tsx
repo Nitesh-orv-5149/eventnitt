@@ -1,103 +1,188 @@
-import Image from "next/image";
+import EventCard from "@/components/ui/EventCard";
+import FirstTitle from "@/components/ui/FIrstTItle";
+import ThirdTitle from "@/components/ui/ThirdTItle";
+import AvatarCircle from "@/components/ui/AvatarCircle";
+import Carousel from "@/components/ui/Carousal";
+import Navbar from "@/components/shared/Navbar";
 
-export default function Home() {
+export default function Page() {
+  // Sample data for featured events
+  const featuredEvents = [
+    {
+      title: "Tech Innovation Summit 2025",
+      eventId: 1234,
+      date: "2025-07-20T10:00:00"
+    },
+    {
+      title: "Annual Hackathon Challenge",
+      eventId: 1235,
+      date: "2025-07-25T09:00:00"
+    },
+    {
+      title: "Web Development Workshop",
+      eventId: 1236,
+      date: "2025-07-30T14:00:00"
+    },
+    {
+      title: "AI & Machine Learning Conference",
+      eventId: 1237,
+      date: "2025-08-05T11:00:00"
+    },
+    {
+      title: "Startup Pitch Competition",
+      eventId: 1238,
+      date: "2025-08-10T16:00:00"
+    }
+  ];
+
+  // Sample data for popular posters (people)
+  const popularPosters = [
+    {
+      name: "Alex Chen",
+      avatar: "/api/placeholder/80/80",
+      postsCount: 24,
+      isVerified: true
+    },
+    {
+      name: "Sarah Kim",
+      avatar: "/api/placeholder/80/80",
+      postsCount: 18,
+      isVerified: true
+    },
+    {
+      name: "Mike Johnson",
+      avatar: "/api/placeholder/80/80",
+      postsCount: 32,
+      isVerified: false
+    },
+    {
+      name: "Emma Davis",
+      avatar: "/api/placeholder/80/80",
+      postsCount: 15,
+      isVerified: true
+    },
+    {
+      name: "David Wong",
+      avatar: "/api/placeholder/80/80",
+      postsCount: 28,
+      isVerified: false
+    },
+    {
+      name: "Lisa Park",
+      avatar: "/api/placeholder/80/80",
+      postsCount: 21,
+      isVerified: true
+    }
+  ];
+
+  // Sample data for happening today events
+  const todayEvents = [
+    {
+      title: "Morning Coffee Networking",
+      eventId: 1240,
+      date: "2025-06-26T08:00:00"
+    },
+    {
+      title: "Lunch & Learn: React Best Practices",
+      eventId: 1241,
+      date: "2025-06-26T12:00:00"
+    },
+    {
+      title: "Evening Tech Talk",
+      eventId: 1242,
+      date: "2025-06-26T18:00:00"
+    },
+    {
+      title: "Code Review Session",
+      eventId: 1243,
+      date: "2025-06-26T15:00:00"
+    }
+  ];
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <>
+      <main className="min-h-screen bg-gradient-to-b from-secondary-2 to-30%">
+        <div className="fixed top-2 left-1/2 -translate-x-1/2 z-50 hidden md:block">
+          <Navbar />
         </div>
+        <div className="md:hidden fixed top-0 left-0 right-0 z-50">
+          <Navbar />
+        </div>
+
+
+        {/* Header Section */}
+        <section className="pt-24 md:pt-24  pb-12">
+          <div className="container mx-auto px-6">
+            <FirstTitle color="text-light" title="eventnitt" />
+            <ThirdTitle color="text-secondary-3" title="explore the vast collection of events happening" />
+          </div>
+        </section>
+
+        {/* Featured Events Section */}
+        <section className="pb-12">
+          <div className="container mx-auto px-6">
+            <div className="mb-8">
+              <ThirdTitle color="text-light" title="featured events" />
+            </div>
+            
+            {/* Featured Events Carousel */}
+            <Carousel showIndicators={true} spacing="md" className="mb-4">
+              {featuredEvents.map((event) => (
+                <EventCard 
+                  key={event.eventId}
+                  title={event.title}
+                  eventId={event.eventId}
+                  date={event.date}
+                />
+              ))}
+            </Carousel>
+          </div>
+        </section>
+
+        {/* Popular Posters Section */}
+        <section className="pb-12">
+          <div className="container mx-auto px-6">
+            <div className="mb-8">
+              <ThirdTitle color="text-light" title="popular posters" />
+            </div>
+            
+            {/* Popular Posters Carousel */}
+            <Carousel showArrows={true} spacing="lg" className="mb-4">
+              {popularPosters.map((poster, index) => (
+                <AvatarCircle 
+                  key={index}
+                  name={poster.name}
+                  avatar={poster.avatar}
+                  postsCount={poster.postsCount}
+                  isVerified={poster.isVerified}
+                />
+              ))}
+            </Carousel>
+          </div>
+        </section>
+
+        {/* Happening Today Section */}
+        <section className="pb-12">
+          <div className="container mx-auto px-6">
+            <div className="mb-8">
+              <ThirdTitle color="text-light" title="happening today" />
+            </div>
+            
+            {/* Today Events Carousel */}
+            <Carousel showIndicators={true} spacing="md" className="mb-4">
+              {todayEvents.map((event) => (
+                <EventCard 
+                  key={event.eventId}
+                  title={event.title}
+                  eventId={event.eventId}
+                  date={event.date}
+                />
+              ))}
+            </Carousel>
+          </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+
+    </>
   );
 }
