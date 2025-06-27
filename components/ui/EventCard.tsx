@@ -3,6 +3,7 @@ import { IEventCard } from "@/types/EventTypes";
 export default function EventCard({
     title,
     eventId,
+    hostedBy,
     date
 }: IEventCard) {
     // Format date to a more readable format
@@ -28,7 +29,7 @@ export default function EventCard({
     return (
         <div className="group w-50 h-60 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer ">
             {/* Header with Date Badge */}
-            <div className="relative h-20 bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-between p-6">
+            <div className="relative h-20 bg-gradient-to-r from-primary-1 to-primary-2 flex items-center justify-between p-6">
                 <div className="text-white">
                     <div className="text-sm font-medium opacity-90">Event</div>
                     <div className="text-lg font-bold">#{eventId}</div>

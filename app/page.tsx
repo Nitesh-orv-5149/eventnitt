@@ -3,7 +3,8 @@ import FirstTitle from "@/components/ui/FIrstTItle";
 import ThirdTitle from "@/components/ui/ThirdTItle";
 import AvatarCircle from "@/components/ui/AvatarCircle";
 import Carousel from "@/components/ui/Carousal";
-import Navbar from "@/components/shared/Navbar";
+import Navbar from "@/components/shared/mainpage/Navbar";
+import PopularHosters from "@/components/shared/mainpage/PopularHosters";
 
 export default function Page() {
   // Sample data for featured events
@@ -32,46 +33,6 @@ export default function Page() {
       title: "Startup Pitch Competition",
       eventId: 1238,
       date: "2025-08-10T16:00:00"
-    }
-  ];
-
-  // Sample data for popular posters (people)
-  const popularPosters = [
-    {
-      name: "Alex Chen",
-      avatar: "/api/placeholder/80/80",
-      postsCount: 24,
-      isVerified: true
-    },
-    {
-      name: "Sarah Kim",
-      avatar: "/api/placeholder/80/80",
-      postsCount: 18,
-      isVerified: true
-    },
-    {
-      name: "Mike Johnson",
-      avatar: "/api/placeholder/80/80",
-      postsCount: 32,
-      isVerified: false
-    },
-    {
-      name: "Emma Davis",
-      avatar: "/api/placeholder/80/80",
-      postsCount: 15,
-      isVerified: true
-    },
-    {
-      name: "David Wong",
-      avatar: "/api/placeholder/80/80",
-      postsCount: 28,
-      isVerified: false
-    },
-    {
-      name: "Lisa Park",
-      avatar: "/api/placeholder/80/80",
-      postsCount: 21,
-      isVerified: true
     }
   ];
 
@@ -140,26 +101,7 @@ export default function Page() {
         </section>
 
         {/* Popular Posters Section */}
-        <section className="pb-12">
-          <div className="container mx-auto px-6">
-            <div className="mb-8">
-              <ThirdTitle color="text-light" title="popular posters" />
-            </div>
-            
-            {/* Popular Posters Carousel */}
-            <Carousel showArrows={true} spacing="lg" className="mb-4">
-              {popularPosters.map((poster, index) => (
-                <AvatarCircle 
-                  key={index}
-                  name={poster.name}
-                  avatar={poster.avatar}
-                  postsCount={poster.postsCount}
-                  isVerified={poster.isVerified}
-                />
-              ))}
-            </Carousel>
-          </div>
-        </section>
+        <PopularHosters />
 
         {/* Happening Today Section */}
         <section className="pb-12">

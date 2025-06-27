@@ -4,7 +4,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { ReactNode, useRef, useState } from "react";
 
 interface ICarousel {
-    children: ReactNode[];
+    children?: ReactNode[];
     showIndicators?: boolean;
     spacing?: 'sm' | 'md' | 'lg';
     showArrows?: boolean;
@@ -79,6 +79,7 @@ export default function Carousel({
             )}
 
             {/* Carousel Container */}
+            { children ? (
             <div 
                 ref={scrollRef}
                 className="flex overflow-x-auto pb-4 no-scrollbar"
@@ -97,28 +98,11 @@ export default function Carousel({
                     ))}
                 </div>
             </div>
-
-            {/* Scroll Indicators */}
-            {showIndicators && (
-                <div className="flex justify-center mt-4 space-x-2">
-                    {children.map((_, index) => (
-                        <div 
-                            key={index} 
-                            className="w-2 h-2 bg-gray-300 rounded-full hover:bg-gray-400 transition-colors duration-200 cursor-pointer"
-                            onClick={() => {
-                                if (scrollRef.current) {
-                                    const itemWidth = 300; // Approximate item width
-                                    scrollRef.current.scrollTo({
-                                        left: index * itemWidth,
-                                        behavior: 'smooth'
-                                    });
-                                }
-                            }}
-                        />
-                    ))}
-                </div>
-            )}
-
+            ) :
+            (
+                <div>no items found</div>
+            )
+            }
         </div>
     );
 }
