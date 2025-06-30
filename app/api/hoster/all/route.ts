@@ -1,12 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
-import { connectDB } from "@/lib/mongoose";
-import Hoster from "@/models/hoster.model";
 
 export async function GET(req: NextRequest) {
   try {
+    const { connectDB } = await import("@/lib/mongoose");
+    const { default: Hoster } = await import("@/models/hoster.model");
+
     await connectDB();
 
-    const hosters = await Hoster.find({},"_id organisation")
+    const hosters = await Hoster.find({}, "_id organisation");
 
     return NextResponse.json({ success: true, hosters });
   } catch (error: any) {
