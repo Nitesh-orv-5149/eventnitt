@@ -1,4 +1,5 @@
 import { IEventCard } from "@/types/EventTypes";
+import Link from "next/link";
 
 export default function EventCard({
     title,
@@ -27,7 +28,7 @@ export default function EventCard({
     };
 
     return (
-        <div className="group w-43 h-50 md:w-50 md:h-60 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer ">
+        <Link href={`/event/${eventId}`} className="group w-43 h-50 md:w-50 md:h-60 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer ">
             {/* Header with Date Badge */}
             <div className="relative h-20 bg-gradient-to-r from-primary-1 to-primary-2 flex items-center justify-between p-2">
                 <div className="text-white">
@@ -69,6 +70,6 @@ export default function EventCard({
                     </div>
                 </div>
             </div>
-        </div>
+        </Link>
     );
 }

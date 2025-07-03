@@ -7,7 +7,7 @@ export async function GET(req: NextRequest) {
     await connectDB();
 
     const events = await Event.aggregate([
-      { $sample: { size: 6 } }, // adjust count here
+      { $sample: { size: 6 } }, 
       { $project: { _id: 1, title: 1, hostedBy: 1, date: 1 } }
     ]);
 

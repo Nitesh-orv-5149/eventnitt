@@ -57,7 +57,7 @@ export default function FormInput({
         >
           {options.map(opt => (
             <option className='bg-secondary-2 p-0' key={opt} value={opt}>
-              {opt[0].toUpperCase() + opt.slice(1)}
+              {opt || "all"}
             </option>
           ))}
         </select>
