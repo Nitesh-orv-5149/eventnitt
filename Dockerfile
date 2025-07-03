@@ -10,7 +10,10 @@ FROM node:20-alpine AS builder
 WORKDIR /app
 
 ARG MONGODB_URI
+ARG JWT_SECRET
+
 ENV MONGODB_URI=$MONGODB_URI
+ENV JWT_SECRET=$JWT_SECRET
 
 COPY . .
 COPY --from=deps /app/node_modules ./node_modules
