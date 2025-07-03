@@ -1,4 +1,4 @@
-import { EventType } from "./EventTypes";
+import { IEventType } from "./EventTypes";
 
 export type Role = "student" | "hoster";
 
