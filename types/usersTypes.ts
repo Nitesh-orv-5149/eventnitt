@@ -1,9 +1,13 @@
 import { EventType } from "./EventTypes";
 
+export type Role = "student" | "hoster";
+
 export interface IStudent {
     _id: string;
     fullName: string;
     email: string;
+    password: string;
+    role: Role;
     phone: string;
     rollNumber: string;
     department: string;
@@ -17,6 +21,8 @@ export interface IHoster {
     organisation: string;
     description?: string;
     email: string;
+    password: string;
+    role: Role;
     phone: string;
     hostedEvents: string[]; 
     instagram: string

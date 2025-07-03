@@ -10,7 +10,7 @@ const EventSchema = new Schema<IEventModel>(
     hostedBy: { type: String, required: true },
     eventType: {
       type: String,
-      enum: ["club", "council", "fest", "workshop", "dept", "others"],
+      enum: ["club", "council", "fest", "workshop", "dept", "hackathon", "others"],
       required: true,
     },
     date: { type: String, required: true },

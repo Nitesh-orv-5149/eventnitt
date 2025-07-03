@@ -1,10 +1,12 @@
 import EventCard from "@/components/ui/EventCard";
-import FirstTitle from "@/components/ui/FIrstTItle";
+import FirstTitle from "@/components/ui/FIrstTitle";
 import ThirdTitle from "@/components/ui/ThirdTItle";
 import AvatarCircle from "@/components/ui/AvatarCircle";
 import Carousel from "@/components/ui/Carousal";
 import Navbar from "@/components/shared/mainpage/Navbar";
 import PopularHosters from "@/components/shared/mainpage/PopularHosters";
+import EventsToday from "@/components/shared/carousals/EventsToday";
+import EventsFeatured from "@/components/shared/carousals/EventsFeatured";
 
 export default function Page() {
   // Sample data for featured events
@@ -86,17 +88,7 @@ export default function Page() {
               <ThirdTitle color="text-light" title="featured events" />
             </div>
             
-            {/* Featured Events Carousel */}
-            <Carousel showIndicators={true} spacing="md" className="mb-4">
-              {featuredEvents.map((event) => (
-                <EventCard 
-                  key={event.eventId}
-                  title={event.title}
-                  eventId={event.eventId}
-                  date={event.date}
-                />
-              ))}
-            </Carousel>
+            <EventsFeatured />
           </div>
         </section>
 
@@ -110,17 +102,7 @@ export default function Page() {
               <ThirdTitle color="text-light" title="happening today" />
             </div>
             
-            {/* Today Events Carousel */}
-            <Carousel showIndicators={true} spacing="md" className="mb-4">
-              {todayEvents.map((event) => (
-                <EventCard 
-                  key={event.eventId}
-                  title={event.title}
-                  eventId={event.eventId}
-                  date={event.date}
-                />
-              ))}
-            </Carousel>
+            <EventsToday />
           </div>
         </section>
       </main>

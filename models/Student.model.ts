@@ -7,6 +7,8 @@ const StudentSchema = new Schema<IStudentModel>(
   {
     fullName: { type: String, required: true },
     email: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
+    role: { type: String, required: true, enum: ["student", "hoster"], default: "student" },
     phone: { type: String, required: true },
     rollNumber: { type: String, required: true, unique: true },
     department: { type: String, required: true },

@@ -1,9 +1,9 @@
-export type EventType = "club" | "council" | "fest" | "workshop" | "dept" | "others";
+export type IEventType = "club" | "council" | "fest" | "workshop" | "dept" | "hackathon" | "others";
 
 export interface IEventCard {
     title: string,
     hostedBy?: string,
-    eventId: number,
+    eventId: string,
     date: string,
 }
 
@@ -12,7 +12,7 @@ export interface IEvent {
     title: string,
     hosterId: string,
     hostedBy: string,
-    eventType: EventType,
+    eventType: IEventType,
     date: string,
     endDate?: string,
     time: string;

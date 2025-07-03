@@ -8,6 +8,8 @@ const HosterSchema = new Schema<IHosterModel>(
     organisation: { type: String, required: true },
     description: String,
     email: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
+    role: { type: String, required: true, enum: ["student", "hoster"], default: "hoster" },
     phone: { type: String, required: true },
     hostedEvents: [{ type: Schema.Types.ObjectId, ref: "Event" }],
     instagram: { type: String, required: true },

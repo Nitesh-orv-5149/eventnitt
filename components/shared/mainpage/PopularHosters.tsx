@@ -14,7 +14,6 @@ export default function PopularHosters() {
   async function fetchPopularHosters() {
     try {
       const response = await axios.get("/api/hoster/all");
-      console.log("Hosters:", response.data.hosters);
       setAllHosters(response.data.hosters)
     } catch (err) {
       console.error("Failed to fetch hosters:", err);
@@ -31,16 +30,18 @@ export default function PopularHosters() {
             <div className="mb-8">
               <ThirdTitle color="text-light" title="popular hosters" />
             </div>
+
+            { allHosters.length == 0 ? <div>no hoster to display</div> :
+              <Carousel showArrows={true} spacing="lg" className="mb-4">
+                {allHosters.map((hoster, index) => (
+                  <AvatarCircle 
+                    key={index}
+                    name={hoster.organisation}
+                  />
+                ))}
+              </Carousel>
+            }
             
-            {/* Popular Posters Carousel */}
-            <Carousel showArrows={true} spacing="lg" className="mb-4">
-              {allHosters.map((hoster, index) => (
-                <AvatarCircle 
-                  key={index}
-                  name={hoster.organisation}
-                />
-              ))}
-            </Carousel>
           </div>
         </section>
     );

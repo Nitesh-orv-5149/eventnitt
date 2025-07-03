@@ -27,29 +27,28 @@ export default function EventCard({
     };
 
     return (
-        <div className="group w-50 h-60 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer ">
+        <div className="group w-43 h-50 md:w-50 md:h-60 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer ">
             {/* Header with Date Badge */}
-            <div className="relative h-20 bg-gradient-to-r from-primary-1 to-primary-2 flex items-center justify-between p-6">
+            <div className="relative h-20 bg-gradient-to-r from-primary-1 to-primary-2 flex items-center justify-between p-2">
                 <div className="text-white">
-                    <div className="text-sm font-medium opacity-90">Event</div>
-                    <div className="text-lg font-bold">#{eventId}</div>
+                    <div className="md:text-lg font-bold">{hostedBy}</div>
                 </div>
                 
                 {/* Date badge */}
-                <div className="bg-white/20 backdrop-blur-sm rounded-lg px-3 py-2">
+                <div className="bg-white/20 backdrop-blur-sm rounded-lg p-1 md:px-3 md:py-2 flex gap-2 items-center">
                     <div className="text-xs font-semibold text-white/80 uppercase tracking-wide">
                         {formatDate(date).split(' ')[0]}
                     </div>
-                    <div className="text-lg font-bold text-white leading-none">
-                        {formatDate(date).split(' ')[1]}
+                    <div className="md:text-lg font-bold text-white leading-none">
+                        {formatDate(date).split(' ')[1].replace(',', '')}
                     </div>
                 </div>
             </div>
 
             {/* Content */}
-            <div className="p-6 flex-1 flex flex-col justify-between">
+            <div className="md:p-6 p-2 flex-1 flex flex-col justify-between">
                 <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2 transition-colors duration-200">
+                    <h3 className="md:text-xl font-bold text-gray-900 mb-3 line-clamp-2 transition-colors duration-200">
                         {title}
                     </h3>
                     

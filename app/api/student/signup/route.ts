@@ -4,50 +4,57 @@ import { hash } from "bcryptjs";
 export async function POST(req: Request) {
   try {
     const { connectDB } = await import("@/lib/mongoose");
-    const { default: Hoster } = await import("@/models/hoster.model");
+    const { default: Student } = await import("@/models/student.model");
 
     await connectDB();
 
     const body = await req.json();
     const {
-      organisation,
-      description,
+      fullName,
       email,
       password,
       phone,
-      instagram,
+      rollNumber,
+      department,
+      year,
     } = body;
 
-    // Basic required fields check
-    if (!organisation || !email || !password || !phone || !instagram) {
+    if (
+      !fullName ||
+      !email ||
+      !password ||
+      !phone ||
+      !rollNumber ||
+      !department ||
+      !year
+    ) {
       return NextResponse.json(
         { success: false, message: "Missing required fields" },
         { status: 400 }
       );
     }
 
-    // Hash the password
     const hashedPassword = await hash(password, 10);
 
-    // Create Hoster
-    const createdHoster = await Hoster.create({
-      organisation,
-      description,
+    const createdStudent = await Student.create({
+      fullName,
       email,
       password: hashedPassword,
       phone,
-      instagram,
+      rollNumber,
+      department,
+      year,
     });
 
-    // Don't return hashed password
-    const { password: _, ...hosterWithoutPassword } = createdHoster.toObject();
+    const { password: _, ...studentWithoutPassword } =
+      createdStudent.toObject();
 
     return NextResponse.json(
-      { success: true, hoster: hosterWithoutPassword },
+      { success: true, student: studentWithoutPassword },
       { status: 201 }
     );
   } catch (err: any) {
-    console.error("❌ Error creating hoster:", err.message);
+    console.error("❌ Error creating student:", err.message);
     return NextResponse.json(
       { success: false, message: err.message },
       { status: 500 }
